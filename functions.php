@@ -366,6 +366,10 @@ add_filter( 'primer_color_schemes', 'stout_color_schemes' );
  */
 function stout_hero_scripts() {
 
+	if ( function_exists( 'primer_is_amp' ) && primer_is_amp() ) {
+		return;
+	}
+
 	$suffix = SCRIPT_DEBUG ? '' : '.min';
 
 	wp_enqueue_script( 'stout-hero', get_stylesheet_directory_uri() . "/assets/js/stout-hero{$suffix}.js", array( 'jquery' ), PRIMER_VERSION, true );
